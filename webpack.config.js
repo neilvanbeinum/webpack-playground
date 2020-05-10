@@ -1,4 +1,5 @@
 const path = require('path'); // you have to use older commonJS require inside webpack config files
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js', // usually imports all other dependencies
@@ -43,5 +44,8 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new TerserPlugin(),
+  ]
 }
