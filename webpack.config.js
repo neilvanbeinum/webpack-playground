@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js', // usually imports all other dependencies
   output: {
     // result of build, created first time
-    filename: 'bundle.js',
+    filename: 'bundle[contenthash].js',
     // path for the above, created first time
     path: path.resolve(__dirname, './dist'),
     // the above two create the path and file you should point your e.g. index.html at
@@ -49,7 +49,7 @@ module.exports = {
   plugins: [
     new TerserPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'styles.css'
-    })
+      filename: 'styles[contenthash].css'
+    }),
   ]
 }
