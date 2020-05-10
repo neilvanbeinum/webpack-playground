@@ -4,10 +4,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js', // usually imports all other dependencies
+  entry: {
+    'hello-world': './src/hello-world.js',
+    'dave': './src/dave.js'
+  },
   output: {
     // result of build, created first time
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     // path for the above, created first time
     path: path.resolve(__dirname, './dist'),
     // the above two create the path and file you should point your e.g. index.html at
@@ -55,8 +58,17 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Woo Party',
-      filename: 'custom_filename.html',
+      title: 'Hello world',
+      chunks: ['hello-world', 'vendors~dave~hello-world'],  // this is key because it tells WP which bundle to use
+      filename: 'hello-world.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1'
+      }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Dave',
+      chunks: ['dave', 'vendors~dave~hello-world'],  // this is key because it tells WP which bundle to use
+      filename: 'dave.html',
       meta: {
         viewport: 'width=device-width, initial-scale=1'
       }
