@@ -18,6 +18,11 @@ module.exports = {
     publicPath: ''
   },
   mode: 'production',
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   module: {
     rules: [
       {
@@ -59,7 +64,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Hello world',
-      chunks: ['hello-world'],  // this is key because it tells WP which bundle to use
+      chunks: ['hello-world', 'vendors~dave~hello-world'],  // this is key because it tells WP which bundle to use
       filename: 'hello-world.html',
       meta: {
         viewport: 'width=device-width, initial-scale=1'
@@ -67,7 +72,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'Dave',
-      chunks: ['dave'],  // this is key because it tells WP which bundle to use
+      chunks: ['dave', 'vendors~dave~hello-world'],  // this is key because it tells WP which bundle to use
       filename: 'dave.html',
       meta: {
         viewport: 'width=device-width, initial-scale=1'

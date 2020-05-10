@@ -1,10 +1,10 @@
 import './heading.scss'
 
 class Heading {
-  render() {
+  render(pageName) {
     const heading = document.createElement('h2');
     heading.classList.add('heading');
-    heading.textContent = 'Hey there';
+    heading.textContent = `Hey there this is page ${pageName}`;
 
     document.body.appendChild(heading);
   }
