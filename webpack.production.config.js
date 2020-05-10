@@ -5,10 +5,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js', // usually imports all other dependencies
+  entry: {
+    'hello-world': './src/hello-world.js',
+    'dave': './src/dave.js'
+  },
   output: {
     // result of build, created first time
-    filename: 'bundle[contenthash].js',
+    filename: '[name].[contenthash].js',   // [name]  dynamically references the entry filename
     // path for the above, created first time
     path: path.resolve(__dirname, './dist'),
     // the above two create the path and file you should point your e.g. index.html at
@@ -51,12 +54,21 @@ module.exports = {
   plugins: [
     // new TerserPlugin(),  included by default
     new MiniCssExtractPlugin({
-      filename: 'styles[contenthash].css'
+      filename: '[name].[contenthash].css'
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Woo Party',
-      filename: 'custom_filename.html',
+      title: 'Hello world',
+      chunks: ['hello-world'],  // this is key because it tells WP which bundle to use
+      filename: 'hello-world.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1'
+      }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Dave',
+      chunks: ['dave'],  // this is key because it tells WP which bundle to use
+      filename: 'dave.html',
       meta: {
         viewport: 'width=device-width, initial-scale=1'
       }

@@ -8,7 +8,7 @@ function addImage() {
   image.src = Dave;
 
   console.log('trying to add image');
-  
+
 
   document.body.appendChild(image);
 }
