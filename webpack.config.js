@@ -18,6 +18,12 @@ module.exports = {
         use: [
           'file-loader'
         ]
+      },
+      {
+        test: /\.css$/,  // I think this is how WP knows whether to apply this rule to the file
+        use: [
+          'style-loader', 'css-loader' // use both loaders  - ordered?
+        ]
       }
     ]
   }
