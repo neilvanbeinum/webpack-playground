@@ -2,6 +2,7 @@ const path = require('path'); // you have to use older commonJS require inside w
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js', // usually imports all other dependencies
@@ -11,7 +12,7 @@ module.exports = {
     // path for the above, created first time
     path: path.resolve(__dirname, './dist'),
     // the above two create the path and file you should point your e.g. index.html at
-    publicPath: './dist/'
+    publicPath: ''
   },
   mode: 'none',
   module: {
@@ -52,6 +53,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles[contenthash].css'
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin()
   ]
 }
