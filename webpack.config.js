@@ -54,6 +54,12 @@ module.exports = {
       filename: 'styles[contenthash].css'
     }),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      title: 'Woo Party',
+      filename: 'custom_filename.html',
+      meta: {
+        viewport: 'width=device-width, initial-scale=1'
+      }
+    })
   ]
 }
