@@ -15,7 +15,7 @@ module.exports = {
     // path for the above, created first time
     path: path.resolve(__dirname, './dist'),
     // the above two create the path and file you should point your e.g. index.html at
-    publicPath: ''
+    publicPath: '/static/'
   },
   mode: 'production',
   optimization: {
