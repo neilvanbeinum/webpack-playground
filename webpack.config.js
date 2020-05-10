@@ -11,7 +11,7 @@ module.exports = {
     publicPath: './dist/'
   },
   mode: 'none',
-  module: { 
+  module: {
     rules: [
       {
         test: /\.(png|jpg)$/,  // I think this is how WP knows whether to apply this rule to the file
@@ -23,6 +23,12 @@ module.exports = {
         test: /\.css$/,  // I think this is how WP knows whether to apply this rule to the file
         use: [
           'style-loader', 'css-loader' // use both loaders  - ordered?
+        ]
+      },
+      {
+        test: /\.scss$/,  // I think this is how WP knows whether to apply this rule to the file
+        use: [
+          'style-loader', 'css-loader', 'sass-loader' // WP loads from RIGHT TO LEFT - pipeline concept
         ]
       }
     ]

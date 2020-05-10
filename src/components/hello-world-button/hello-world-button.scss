@@ -1,0 +1,11 @@
+$colour: green;
+$weight: bold;
+
+.hello-world-button {
+  background-color: $colour;
+}
+
+.hello-world-text {
+  color: blue;
+  font-weight: $weight;
+}
