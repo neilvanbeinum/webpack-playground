@@ -30,6 +30,17 @@ module.exports = {
         use: [
           'style-loader', 'css-loader', 'sass-loader' // WP loads from RIGHT TO LEFT - pipeline concept
         ]
+      },
+      {
+        test: /\.js$/,  // I think this is how WP knows whether to apply this rule to the file
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ '@babel/env' ],
+            plugins: [ 'transform-class-properties' ]
+          }
+        }
       }
     ]
   }

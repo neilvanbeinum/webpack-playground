@@ -1,9 +1,11 @@
 import './hello-world-button.scss';
 
 class HelloWorldButton {
+  buttonCssClass = 'hello-world-button' // class property
+
   render() {
     const button = document.createElement('button');
-    button.classList.add('hello-world-button');
+    button.classList.add(this.buttonCssClass);
 
     button.textContent = "Let's Rock";
 
