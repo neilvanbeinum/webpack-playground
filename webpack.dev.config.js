@@ -14,6 +14,11 @@ module.exports = {
     publicPath: ''
   },
   mode: 'development',
+  devServer: {
+    contentBase: path.resolve(__dirname, './dist'),
+    index: 'custom_filename.html',
+    port: 3000
+  },
   module: {
     rules: [
       {

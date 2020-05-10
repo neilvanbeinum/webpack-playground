@@ -12,4 +12,4 @@ if(process.env.NODE_ENV === 'production') {
   console.log("You're in development mode");
 }
 
-helloWorldButton.notAMethod();
+console.log('hi');
