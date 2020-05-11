@@ -42,7 +42,20 @@ module.exports = {
       {
         test: /\.scss$/,  // I think this is how WP knows whether to apply this rule to the file
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' // WP loads from RIGHT TO LEFT - pipeline concept
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function() {
+                return [
+                  require('precss'),  // let's you use modern CSS features
+                  require('autoprefixer')
+                ]
+              }
+            }
+          },
+          'sass-loader'
         ]
       },
       {
