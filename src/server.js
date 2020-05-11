@@ -19,7 +19,7 @@ app.get('/dave/', function(req, res) {
   res.send(content);
 })
 
-app.use('/static', express.static(path.resolve(__dirname, '../dist')));
+app.use('/party_time_assets', express.static(path.resolve(__dirname, '../dist')));
 
 app.listen(3000, function() {
   console.log('started application on http://localhost:3000');
