@@ -1,12 +1,12 @@
 import './heading.scss'
+import $ from 'jquery';
 
 class Heading {
   render(pageName) {
-    const heading = document.createElement('h2');
-    heading.classList.add('heading');
-    heading.textContent = `Hey there this is page ${pageName}`;
+    const heading = $('<h2>');
+    heading.text(`Hey there this is page ${pageName}`);
 
-    document.body.appendChild(heading);
+   $('body').append(heading);
   }
 }
 
