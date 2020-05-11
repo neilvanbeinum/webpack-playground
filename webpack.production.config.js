@@ -7,7 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     'hello-world': './src/hello-world.js',
-    'dave': './src/dave.js'
+    'dave': './src/dave.js',
+    'font-awesome/scss/font-awesome.scss': 'font-awesome/scss/font-awesome.scss'
   },
   output: {
     // result of build, created first time
@@ -68,6 +69,25 @@ module.exports = {
             plugins: [ 'transform-class-properties' ]
           }
         }
+      },
+      {
+        test: /font-awesome\.config\.js/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'font-awesome-loader' },
+        ]
+      },
+      {
+        test: /.(ttf|otf|eot|svg|woff)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
       }
     ]
   },
