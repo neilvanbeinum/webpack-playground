@@ -14,7 +14,7 @@ module.exports = {
     // path for the above, created first time
     path: path.resolve(__dirname, './dist'),
     // the above two create the path and file you should point your e.g. index.html at
-    publicPath: ''
+    publicPath: '/party_time_assets/'
   },
   mode: 'development',
   devServer: {
@@ -61,17 +61,13 @@ module.exports = {
       title: 'Hello world',
       chunks: ['hello-world', 'vendors~dave~hello-world'],  // this is key because it tells WP which bundle to use
       filename: 'hello-world.html',
-      meta: {
-        viewport: 'width=device-width, initial-scale=1'
-      }
+      template: './src/index_template.html'
     }),
     new HtmlWebpackPlugin({
       title: 'Dave',
       chunks: ['dave', 'vendors~dave~hello-world'],  // this is key because it tells WP which bundle to use
       filename: 'dave.html',
-      meta: {
-        viewport: 'width=device-width, initial-scale=1'
-      }
+      template: './src/index_template.html'
     })
   ]
 }
